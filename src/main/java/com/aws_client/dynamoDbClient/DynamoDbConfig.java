@@ -14,7 +14,8 @@ public class DynamoDbConfig {
     public DynamoDbClient dynamoDbClient() {
         return DynamoDbClient.builder()
                 .region(Region.US_EAST_1)  // Set your desired region
-                .credentialsProvider(ProfileCredentialsProvider.create())
+                //.credentialsProvider(ProfileCredentialsProvider.create())                
+                .credentialsProvider(DefaultCredentialsProvider.create()) // for cloud env (where ec2 uses the IAM role)
                 .build();
     }
 }
